@@ -30,7 +30,13 @@ app.use("/api/users", userRoutes);
 // app.get("*", (req, res) => {
 // 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 // });
+// Serve static files from the React build folder
+app.use(express.static(path.join(__dirname, "build")));
 
+// Fallback to index.html for all other routes (needed for React Router)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 
 
