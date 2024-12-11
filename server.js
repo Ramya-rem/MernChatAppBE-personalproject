@@ -25,18 +25,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-// app.use(express.static(path.join(__dirname, "/frontend/dist"))) //it is the middleware(static) use to serve static file like html,css
+app.use(express.static(path.join(__dirname, "/frontend/dist"))) //it is the middleware(static) use to serve static file like html,css
 
-// app.get("*", (req, res) => {
-// 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-// });
-// Serve static files from the React build folder
-app.use(express.static(path.join(__dirname, "build")));
-
-// Fallback to index.html for all other routes (needed for React Router)
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
+
 
 
 
