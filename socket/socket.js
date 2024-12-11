@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = new Server(server, {//will have io that's going to be new server will pass our server into it
 	
     cors: {
-		origin: ["http://localhost:3000"], //frontend app
+		origin: ["https://mernchatappfe-project.onrender.com"], //frontend app
 		methods: ["GET", "POST"],
 	},
 });
