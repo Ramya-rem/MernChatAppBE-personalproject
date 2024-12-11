@@ -25,13 +25,18 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist"))) //it is the middleware(static) use to serve static file like html,css
+// app.use(express.static(path.join(__dirname, "/frontend/dist"))) //it is the middleware(static) use to serve static file like html,css
 
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// app.get("*", (req, res) => {
+// 	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+// });
+// Serve static files from the 'frontend/dist' directory
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+
+// Catch-all route to serve the index.html for any other route
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
 });
-
-
 
 
 // app.get('/',(req,res)=>{
